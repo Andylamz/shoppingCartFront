@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
 
 const cartSlice = createSlice({
   name: "cart",
@@ -35,7 +34,9 @@ const cartSlice = createSlice({
       }
       if (product.quantity === 1) {
         product.quantity--;
-        state.items = state.items.filter((item) => item.id != action.payload);
+        state.items = state.items.filter(
+          (item) => item.id !== Number(action.payload)
+        );
       } else {
         product.quantity--;
       }

@@ -1,10 +1,6 @@
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addOneToCart,
-  removeOneFromCart,
-  deleteFromCart,
-} from "../Redux/cartSlice";
+import { addOneToCart, removeOneFromCart } from "../Redux/cartSlice";
 
 function ProductCard({ title, price, id }) {
   const item = useSelector((state) => state.cartItems?.items || []).find(
@@ -13,9 +9,6 @@ function ProductCard({ title, price, id }) {
   const dispatch = useDispatch();
   const quantity = !item ? 0 : item.quantity;
 
-  function handleRemoveAll() {
-    dispatch(deleteFromCart(id));
-  }
   function handleAdd() {
     dispatch(addOneToCart({ id, title, price }));
     console.log(quantity);
