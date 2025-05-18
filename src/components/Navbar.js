@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Button, Navbar, Modal } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import CardProduct from "./CardProduct";
@@ -20,7 +20,7 @@ function NavbarComponent() {
     setShow(false);
   }
   async function checkout() {
-    await fetch("http://localhost:4000/checkout", {
+    await fetch(`${process.env.REACT_APP_API_URL}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
