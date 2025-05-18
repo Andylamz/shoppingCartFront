@@ -8,9 +8,7 @@ const cartSlice = createSlice({
   },
   reducers: {
     addOneToCart(state, action) {
-      const product = state.items.find(
-        (item) => item.id === Number(action.payload.id)
-      );
+      const product = state.items.find((item) => item.id === action.payload.id);
       console.log(action);
       if (!product) {
         state.items.push({
@@ -34,9 +32,7 @@ const cartSlice = createSlice({
       }
       if (product.quantity === 1) {
         product.quantity--;
-        state.items = state.items.filter(
-          (item) => item.id !== Number(action.payload)
-        );
+        state.items = state.items.filter((item) => item.id !== action.payload);
       } else {
         product.quantity--;
       }
